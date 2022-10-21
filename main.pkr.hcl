@@ -17,7 +17,7 @@ source "digitalocean" "machine" {
   region           = "${var.region}"
   image            = "${var.image}"
   size             = "${var.size}"
-  snapshot_name    = "${var.snapshot_name}"
+  snapshot_name    = "${var.snapshot_name}"-${local.timestamp}"
   snapshot_regions = "${var.snapshot_regions}"
   ssh_username     = "${var.ssh_username}"
   tags             = "${var.tags}"
@@ -30,7 +30,13 @@ build {
 
   provisioner "shell" {
     inline = [
-      "whoami"
+      "groupadd -g 1001 ubuntu",
+      "useradd ubuntu -m -g 1001 -u 1001",
+      "apt-get update"
     ]
+  }
+
+  provisioner "shell" {
+    script = "./scripts/bootstrap.sh"
   }
 }

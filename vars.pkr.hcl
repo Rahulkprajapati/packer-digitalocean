@@ -31,7 +31,7 @@ variable "size" {
 variable "snapshot_name" {
   description = "Naming after packer jobs finished"
   type        = string
-  default     = "ubuntu-nginx-std"
+  default     = "ubuntu-nginx-std-nginx"
 }
 
 variable "snapshot_regions" {
