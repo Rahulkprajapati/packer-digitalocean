@@ -17,7 +17,7 @@ source "digitalocean" "machine" {
   region           = "${var.region}"
   image            = "${var.image}"
   size             = "${var.size}"
-  snapshot_name    = "${var.snapshot_name}"-${local.timestamp}"
+  snapshot_name    = "${var.snapshot_name}-${local.timestamp}"
   snapshot_regions = "${var.snapshot_regions}"
   ssh_username     = "${var.ssh_username}"
   tags             = "${var.tags}"
